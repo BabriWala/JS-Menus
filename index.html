@@ -4,9 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vertical Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body{
+            margin: 0;
+        }
+        .icons{
+            width: 92px;
+            background-color: rgb(115, 229, 138);
+            position: absolute;
+            margin: 70px 0;
+        }
+        .icons > a{
+            display: block;
+            text-align: center;
+            padding: 20px;
+            font-size: 50px;
+            color: white;
+        }
+        .active{
+            background-color: black;
+        }
+        .icons > a:hover{
+            background-color: black;
+            color: red;
+            transition: color 5s ease;
+        }
+
+    </style>
+
+
+
 </head>
 <body>
-    
+    <div class="icons">
+        <a class="active" href="#"><i class="fa fa-home"></i></a>
+        <a href="#"><i class="fa fa-search"></i></a>
+        <a href="#"><i class="fa fa-envelope"></i></a>
+        <a href="#"><i class="fa fa-globe"></i></a>
+        <a href="#"><i class="fa fa-trash"></i></a>
+    </div>
 </body>
 </html>
