@@ -8,28 +8,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        .icon{
-            margin: 100px;
+        .accordion{
+            outline: none;
+            border: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 20px 10px;
+            font-size: 20px;
+            font-weight: bold;
             cursor: pointer;
+            background-color: aqua;
         }
 
-        .bar1, .bar2, .bar3{
-            width: 35px;
-            background-color: #000;
-            height: 5px;
-            margin: 6px 0;
-            transition: all 0.3s ease-in-out;
+        .accordion:after{
+            content: "\2193";
+            float: right;
         }
 
-        .change .bar1{
-            transform: translate(0, 11px) rotate(-45deg) 
+        .active:after{
+            content: "\2191";
         }
-        .change .bar2{
-            opacity: 0;
+
+        .active, .accordion:hover{
+            background-color: yellow;
         }
-        .change .bar3{
-            transform: translate(0, -11px) rotate(45deg);
+
+        .panel{
+            background-color: bisque;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s;
         }
+
 
     </style>
 
@@ -37,17 +49,32 @@
 
 </head>
 <body>
-    <div class="icon" onclick="myFunc(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>   
-    </div>
+    <button class="accordion">Section 1</button>
+    <div class="panel">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati aliquid est iste quae perferendis sunt, impedit eum fugiat laborum tenetur!</div>
+
+    <button class="accordion">Section 2</button>
+    <div class="panel">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati aliquid est iste quae perferendis sunt, impedit eum fugiat laborum tenetur!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati aliquid est iste quae perferendis sunt, impedit eum fugiat laborum tenetur!</div>
+
+    <button class="accordion">Section 3</button>
+    <div class="panel">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati aliquid est iste quae perferendis sunt, impedit eum fugiaLorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati aliquid est iste quae perferendis sunt, impedit eum fugiat laborum tenetur!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati aliquid est iste quae perferendis sunt, impedit eum fugiat laborum tenetur!t laborum tenetur!</div>
+
+
 
     <script>
-        function myFunc(x){
-            // console.log(x.classList) 
-            x.classList.toggle('change')
-        }
+       let accordion = document.getElementsByClassName('accordion');
+       let i = 0;
+       for(i=0; i < accordion.length; i++){
+        accordion[i].addEventListener('click', function (){
+            this.classList.toggle('active');
+            let panel = this.nextElementSibling;
+            if(panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            }else{
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+                console.log(panel.scrollHeight)
+            }
+        })
+       }
     </script>
 </body>
 </html>
